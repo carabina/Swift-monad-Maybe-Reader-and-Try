@@ -202,10 +202,11 @@ enum Try<T> {
 	case Successful(T)
 	case Failure(ErrorType)
 	init(f: () throws -> T) {
-	do {
-		self = .Successful(try f())
-	} catch {
-		self = .Failure(error)
+		do {
+			self = .Successful(try f())
+		} catch {
+			self = .Failure(error)
+		}
 	}
 }
 ```
